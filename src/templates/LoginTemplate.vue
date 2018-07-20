@@ -8,7 +8,6 @@
                 <slot/>
             </div>
         </main>
-        <rodape cor="blue"></rodape>
     </div>
 </template>
 
