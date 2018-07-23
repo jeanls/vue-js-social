@@ -7,12 +7,13 @@
         </div>
         <div slot="principal">
             <card>
-                <h5>Login</h5>
+                <h5>Cadastro</h5>
                 <form>
                     <input type="text" name="login" placeholder="Login"/>
                     <input type="password" name="senha" placeholder="Senha"/>
-                    <router-link to="/cadastro"><button type="button" class="btn orange waves-effect">Cadastre-se</button></router-link>
-                    <button class="btn waves-effect">Entrar</button>
+                    <input type="password" name="senha2" placeholder="Confirme sua senha"/>
+                    <router-link to="/login"><button type="button" class="btn orange waves-effect">Já tenho conta</button></router-link>
+                    <button class="btn waves-effect">Cadastrar</button>
                 </form>
             </card>
         </div>
@@ -23,13 +24,8 @@
     import LoginTemplate from "../../templates/LoginTemplate";
     import Card from "../layouts/Card";
     export default {
-        name: "Login",
-        components: {Card, LoginTemplate},
-        data(){
-            return{
-
-            }
-        }
+        name: "Cadastro",
+        components: {Card, LoginTemplate}
     }
 </script>
 

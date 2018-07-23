@@ -1,5 +1,5 @@
 <template>
-    <footer style="position: relative;bottom: 0;width: 100%;" :class="'page-footer ' + cor">
+    <footer :class="'page-footer ' + cor">
         <div class="container">
             <div class="row">
                 <div class="col l6 s12">
@@ -30,5 +30,10 @@
 </script>
 
 <style scoped>
-
+    footer{
+        position:fixed;
+        bottom:0;
+        width:100%;
+        height:auto;
+    }
 </style>
