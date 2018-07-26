@@ -8,12 +8,11 @@
         <div slot="principal">
             <card>
                 <h5>Login</h5>
-                <form>
-                    <input type="text" name="login" v-model="email" placeholder="Login"/>
-                    <input type="password" v-model="password" name="senha" placeholder="Senha"/>
-                    <router-link to="/cadastro"><button type="button" class="btn orange waves-effect">Cadastre-se</button></router-link>
-                    <button v-on:click="login()" type="button" class="btn waves-effect">Entrar</button>
-                </form>
+                <span v-for="erro in errors" style="color: white" class="badge red">{{erro[0]}}</span>
+                <input type="text" name="login" v-model="email" placeholder="Login"/>
+                <input type="password" v-model="password" name="senha" placeholder="Senha"/>
+                <router-link to="/cadastro"><button type="button" class="btn orange waves-effect">Cadastre-se</button></router-link>
+                <button v-on:click="login()" type="button" class="btn waves-effect">Entrar</button>
             </card>
         </div>
     </login-template>
@@ -29,7 +28,8 @@
         data(){
             return{
                 email: "",
-                password: ""
+                password: "",
+                errors: []
             }
         },
         methods:{
@@ -46,6 +46,7 @@
                         }
                     }else {
                         if(response.data.errors){
+                            this.errors = Object.values(response.data.errors);
                             for(let erro of Object.values(response.data.errors)){
                                 console.log(erro);
                             }
