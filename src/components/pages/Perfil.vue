@@ -62,6 +62,7 @@
                 let userObject = JSON.parse(user);
                 this.name = userObject.name;
                 this.email = userObject.email;
+                this.usuario = JSON.parse(sessionStorage.getItem('usuario'));
             }else {
                 this.$router.push("/login");
             }
@@ -80,7 +81,6 @@
                         sessionStorage.setItem("usuario", JSON.stringify(response.data));
                         this.errors = [];
                         this.usuario = JSON.parse(sessionStorage.getItem('usuario'));
-                        console.log(this.usuario.imagem);
                     }else {
                         this.mensagem = false;
                         this.errors = Object.values(response.data);

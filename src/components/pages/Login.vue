@@ -56,7 +56,7 @@
                     }
                 }).catch(e => {
 
-                    console.log("Tente novamente mais tarde");
+                    console.log(e);
                 })
             }
         }
