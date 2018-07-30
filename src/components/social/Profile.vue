@@ -3,12 +3,12 @@
         <card>
             <div class="row valign-wrapper">
                 <grid tamanho="4">
-                    <img src="https://materializecss.com/images/yuna.jpg" alt="" class="circle responsive-img">
+                    <img :src="usuario.imagem || 'https://materializecss.com/images/yuna.jpg'" :alt="usuario.name" class="circle responsive-img">
                 </grid>
                 <grid tamanho="8">
                     <span class="black-text">
-                        <h5>Fulana de Tal</h5>
-                        This is a square image. Add the "circle" class to it to make it appear circular.
+                        <h5>{{usuario.name || 'Sem nome'}}</h5>
+                        {{usuario.descricao || ''}}
                     </span>
                 </grid>
             </div>
@@ -21,7 +21,15 @@
     import Card from "../layouts/Card";
     export default {
         name: "Profile",
-        components: {Card, Grid}
+        components: {Card, Grid},
+        created(){
+            this.usuario = JSON.parse(sessionStorage.getItem('usuario'));
+        },
+        data(){
+            return{
+                usuario: {}
+            }
+        }
     }
 </script>
 

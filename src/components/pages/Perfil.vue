@@ -16,6 +16,7 @@
                 <span v-if="mensagem" style="color: white" class="badge green">{{mensagem}}</span>
                 <input type="text" v-model="name" placeholder="Nome"/>
                 <input type="text" v-model="email" placeholder="Email"/>
+                <input type="text" v-model="descricao" placeholder="Descrição"/>
                 <div class="file-field input-field">
                     <div class="btn">
                         <span>Imagem</span>
@@ -52,7 +53,8 @@
                 errors: [],
                 mensagem: false,
                 imagem: "",
-                usuario:""
+                usuario:"",
+                descricao:""
             }
         },
         created(){
@@ -62,6 +64,7 @@
                 let userObject = JSON.parse(user);
                 this.name = userObject.name;
                 this.email = userObject.email;
+                this.descricao = userObject.descricao;
                 this.usuario = JSON.parse(sessionStorage.getItem('usuario'));
             }else {
                 this.$router.push("/login");
@@ -71,6 +74,7 @@
             perfil(){
                 axios.put(`http://127.0.0.1:8000/api/perfil`, {
                     email: this.email,
+                    descricao: this.descricao,
                     password: this.password,
                     password_confirmation: this.password_confirmation,
                     name: this.name,
