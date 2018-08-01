@@ -23,7 +23,6 @@
 <script>
     import LoginTemplate from "../../templates/LoginTemplate";
     import Card from "../layouts/Card";
-    import axios from 'axios';
     export default {
         name: "Cadastro",
         components: {Card, LoginTemplate},
@@ -38,7 +37,7 @@
         },
         methods:{
             cadastro(){
-                axios.post(`http://127.0.0.1:8000/api/cadastro`, {
+                this.$http.post(this.$urlAPI + "cadastro", {
                     email: this.email,
                     password: this.password,
                     password_confirmation: this.password_confirmation,

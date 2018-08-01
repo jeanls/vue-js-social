@@ -2,13 +2,16 @@
     <div>
         <div style="margin-bottom: 5px" class="row">
             <grid tamanho="12" class="input-field">
-                <textarea v-model="conteudo" id="conteudo" class="materialize-textarea"></textarea>
+                <input type="text" v-model="conteudo.titulo">
+                <textarea v-if="conteudo.titulo" placeholder="Corpo do texto" v-model="conteudo.texto" id="conteudo" class="materialize-textarea"></textarea>
                 <label for="conteudo">O que está acontecendo?</label>
+                <input placeholder="Link" v-if="conteudo.titulo && conteudo.texto" type="text" v-model="conteudo.link">
+                <input placeholder="Imagem" v-if="conteudo.titulo && conteudo.texto" type="text" v-model="conteudo.imagem">
             </grid>
         </div>
         <div class="row">
             <grid tamanho="2" class="no-padding offset-s10">
-                <button v-if="conteudo" style="margin-right: 9px" class="btn waves-effect waves-light right">Publicar</button>
+                <button v-if="conteudo.titulo && conteudo.texto" style="margin-right: 9px" class="btn waves-effect waves-light right">Publicar</button>
             </grid>
         </div>
 
@@ -24,7 +27,7 @@
         components: {CardDetalhe, CardConteudo, Grid},
         data(){
             return{
-                conteudo: ''
+                conteudo: {titulo: '', texto: '', link: '', imagem: ''}
             }
         }
     }

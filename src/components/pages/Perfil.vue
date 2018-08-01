@@ -38,7 +38,6 @@
     import SiteTemplate from "../../templates/SiteTemplate";
     import Card from "../layouts/Card";
     import Grid from "../layouts/Grid";
-    import axios from 'axios';
     export default {
         name: "Perfil",
         components: {Grid, Card, SiteTemplate},
@@ -72,7 +71,7 @@
         },
         methods:{
             perfil(){
-                axios.put(`http://127.0.0.1:8000/api/perfil`, {
+                this.$http.put(this.$urlAPI + "perfil", {
                     email: this.email,
                     descricao: this.descricao,
                     password: this.password,

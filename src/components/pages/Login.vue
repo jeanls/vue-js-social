@@ -21,7 +21,6 @@
 <script>
     import LoginTemplate from "../../templates/LoginTemplate";
     import Card from "../layouts/Card";
-    import axios from 'axios';
     export default {
         name: "Login",
         components: {Card, LoginTemplate},
@@ -34,7 +33,7 @@
         },
         methods:{
             login(){
-                axios.post(`http://127.0.0.1:8000/api/login`, {
+                this.$http.post(this.$urlAPI + "login", {
                     email: this.email,
                     password: this.password
                 }).then(response => {
@@ -55,7 +54,6 @@
                         }
                     }
                 }).catch(e => {
-
                     console.log(e);
                 })
             }
