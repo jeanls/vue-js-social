@@ -11,7 +11,7 @@
         </div>
         <div class="row">
             <grid tamanho="2" class="no-padding offset-s10">
-                <button v-if="conteudo.titulo && conteudo.texto" style="margin-right: 9px" class="btn waves-effect waves-light right">Publicar</button>
+                <button @click="publicar()" v-if="conteudo.titulo && conteudo.texto" style="margin-right: 9px" class="btn waves-effect waves-light right">Publicar</button>
             </grid>
         </div>
 
@@ -28,6 +28,22 @@
         data(){
             return{
                 conteudo: {titulo: '', texto: '', link: '', imagem: ''}
+            }
+        },
+        methods: {
+            publicar(){
+                this.$http.post(this.$urlAPI + "conteudo/adicionar", {
+                    titulo: this.conteudo.titulo,
+                    texto: this.conteudo.texto,
+                    link: this.conteudo.link,
+                    imagem: this.conteudo.imagem
+                }, {"headers":{"authorization": "Bearer " + this.$token()}}).then(response => {
+                    if(response.data.status){
+                        console.log(response.data.conteudos);
+                    }
+                }).catch(e => {
+                    console.log(e);
+                })
             }
         }
     }
