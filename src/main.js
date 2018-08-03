@@ -16,16 +16,23 @@ Vue.prototype.$token = function () {
 
 var store = {
     state: {
-        nome: "Jean"
+        usuario: sessionStorage.getItem('usuario') ? JSON.parse(sessionStorage.getItem('usuario')) : null,
+        token: sessionStorage.getItem('token') ? sessionStorage.getItem('token') : null
     },
     getters: {
-        getNome: state => {
-            return state.nome;
+        getUsuario: state => {
+            return state.usuario;
+        },
+        getToken: state => {
+            return state.token;
         }
     },
     mutations: {
-        setNome(state, n){
-            state.nome = n;
+        setUsuario(state, n){
+            state.usuario = n;
+        },
+        setToken(state, n){
+            state.token = n;
         }
     }
 };

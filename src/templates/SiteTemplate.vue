@@ -33,10 +33,8 @@
         name: "SiteTemplate",
         components: {Grid, Rodape, NavBar},
         created(){
-            let user = sessionStorage.getItem("usuario");
-            if(user){
-                this.usuario = JSON.parse(user);
-            }else {
+            this.usuario = this.$store.getters.getUsuario;
+            if(!this.usuario){
                 this.$router.push("/login");
             }
         },
@@ -48,6 +46,7 @@
         methods:{
             sair(){
                 sessionStorage.clear();
+                this.$store.commit('setUsuario', null);
                 this.usuario = false;
                 this.$router.push("/login");
             }

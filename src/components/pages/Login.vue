@@ -41,6 +41,8 @@
                         if(response.data.token){
                             sessionStorage.setItem("usuario", JSON.stringify(response.data.user));
                             sessionStorage.setItem("token", response.data.token);
+                            this.$store.commit('setUsuario', JSON.parse(JSON.stringify(response.data.user)));
+                            this.$store.commit('setToken', response.data.token);
                             this.$router.push('/');
                         }
                     }else {
